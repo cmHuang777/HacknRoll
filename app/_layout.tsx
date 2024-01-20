@@ -4,6 +4,9 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
+import React from 'react';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
 
 import { useColorScheme } from '@/components/useColorScheme';
 
@@ -49,10 +52,18 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+
+    <ApplicationProvider {...eva} theme={eva.light}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="home" options={{
+          headerTitle: 'Alarms',
+        }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
+
+    </ApplicationProvider>
     </ThemeProvider>
+
+
   );
 }
